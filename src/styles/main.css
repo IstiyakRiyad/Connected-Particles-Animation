@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Fredericka the Great';
+    src: url('./../assets/fonts/FrederickatheGreat-Regular.ttf') format('truetype');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Fredericka the Great';
+    margin: 0;
+    background-image: url('../assets/image/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+
+    color: #e8e0d1;
+}
+
+h1 {
+    margin-top: 1.5em;
+    font-size: 60px;
+    font-weight: 400;
+    text-align: center;
+}
