@@ -60,7 +60,10 @@ module.exports = {
     },
 
     plugins: [
-        new HtmlWebpackPlugin({template: "./src/template.html"}),
+        new HtmlWebpackPlugin({
+            template: "./src/template.html",
+            inject: 'body'
+        }),
         new MiniCssExtractPlugin({filename: "styles/" + cssName})
     ],
 
