@@ -38,5 +38,5 @@ npm run build-dev
 * `src/assets/fonts` - put fonts here. Don't forget to use correct path
 
 ## Netlify Link
-![Link](https://awesome-newton-ac24bd.netlify.app/)
+<a href="https://awesome-newton-ac24bd.netlify.app/"> Particle Animation <a>
 
