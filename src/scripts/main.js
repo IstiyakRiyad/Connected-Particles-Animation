@@ -22,8 +22,8 @@ let particles;
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-canvas.width = canvas.clientWidth * window.devicePixelRatio;
-canvas.height = canvas.clientHeight * window.devicePixelRatio;
+canvas.width = window.innerWidth * window.devicePixelRatio;
+canvas.height = window.innerHeight * window.devicePixelRatio;
 
 // For Desktop
 if(canvas.width / window.devicePixelRatio >= 576) {
