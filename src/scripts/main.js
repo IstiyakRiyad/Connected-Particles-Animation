@@ -109,30 +109,30 @@ addEventListener('resize', ()=> {
     init();
 });
 
-canvas.addEventListener('mousemove', event => {
+window.addEventListener('mousemove', event => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
     mouse.radius = (canvas.width / 80) * (canvas.height / 80);
 });
 
-canvas.addEventListener('mouseout', ()=> {
+window.addEventListener('mouseout', ()=> {
     mouse.x = undefined;
     mouse.y = undefined;
 });
 
-canvas.addEventListener('touchstart', event => {
+window.addEventListener('touchstart', event => {
     mouse.x = event.touches[0].clientX * window.devicePixelRatio;
     mouse.y = event.touches[0].clientY * window.devicePixelRatio;
     mouse.radius = canvas.width / 6;
 });
 
-canvas.addEventListener('touchmove', event => {
+window.addEventListener('touchmove', event => {
     mouse.x = event.touches[0].clientX * window.devicePixelRatio;
     mouse.y = event.touches[0].clientY * window.devicePixelRatio;
     mouse.radius = canvas.width / 6;
 });
 
-canvas.addEventListener('touchend', event => {
+window.addEventListener('touchend', event => {
     mouse.x = undefined;
     mouse.y = undefined;
     mouse.radius = undefined;
