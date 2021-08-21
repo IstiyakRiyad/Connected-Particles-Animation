@@ -7,20 +7,32 @@ export const mouse = {
     y: undefined,
     radius: undefined
 };
-export const RANGE = 100;
-export const LINE_WIDTH = 4;
 
-const numberOfParticle = 100;
-const color = '#000';
+// For Mobile
+export let RANGE = 75;
+export let LINE_WIDTH = 4;
+export let RADIUS = 3;
+
+let numberOfParticle = 100;
+let particleSpeedRange = 1;
+let color = '#000';
 let particles;
 
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-const pixelRatio = window.devicePixelRatio;
-canvas.width = canvas.clientWidth * pixelRatio;
-canvas.height = canvas.clientHeight * pixelRatio;
+canvas.width = canvas.clientWidth * window.devicePixelRatio;
+canvas.height = canvas.clientHeight * window.devicePixelRatio;
+
+// For Desktop
+if(canvas.width / window.devicePixelRatio >= 600) {
+    numberOfParticle = 150;
+    RANGE = 100;
+    RADIUS = 4;
+    particleSpeedRange = 0.4;
+}
+
 
 // Initializing particles
 function init() {
@@ -30,10 +42,10 @@ function init() {
         const pY = Math.random() * canvas.height;
         const position = new Vec2(pX, pY);
 
-        let vX = (Math.random() - .5)* 2;
+        let vX = (Math.random() - .5)* particleSpeedRange * window.devicePixelRatio;
         vX = (vX > 0) ? vX + 1 : vX - 1;
 
-        let vY = (Math.random() - .5) * 2;
+        let vY = (Math.random() - .5) * particleSpeedRange * window.devicePixelRatio;
         vY = (vY > 0) ? vY + 1 : vY - 1;
 
         const velocity = new Vec2(vX, vY);
@@ -83,13 +95,13 @@ canvas.addEventListener('mouseout', ()=> {
 canvas.addEventListener('touchstart', event => {
     mouse.x = event.touches[0].clientX * window.devicePixelRatio;
     mouse.y = event.touches[0].clientY * window.devicePixelRatio;
-    mouse.radius = canvas.width / 8;
+    mouse.radius = canvas.width / 6;
 });
 
 canvas.addEventListener('touchmove', event => {
     mouse.x = event.touches[0].clientX * window.devicePixelRatio;
     mouse.y = event.touches[0].clientY * window.devicePixelRatio;
-    mouse.radius = canvas.width / 8;
+    mouse.radius = canvas.width / 6;
 });
 
 canvas.addEventListener('touchend', event => {
