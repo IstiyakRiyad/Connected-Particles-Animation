@@ -26,11 +26,18 @@ canvas.width = canvas.clientWidth * window.devicePixelRatio;
 canvas.height = canvas.clientHeight * window.devicePixelRatio;
 
 // For Desktop
-if(canvas.width / window.devicePixelRatio >= 600) {
+if(canvas.width / window.devicePixelRatio >= 576) {
     numberOfParticle = 150;
     RANGE = 100;
     RADIUS = 4;
     particleSpeedRange = 0.4;
+}
+
+if(canvas.width / window.devicePixelRatio >= 576 && canvas.width / window.devicePixelRatio <= 900) {
+    numberOfParticle = 115;
+    RANGE = 82;
+    RADIUS = 3.5;
+    particleSpeedRange = 0.6;
 }
 
 
@@ -77,6 +84,27 @@ addEventListener('resize', ()=> {
 
     canvas.width = canvas.clientWidth * pixelRatio;
     canvas.height = canvas.clientHeight * pixelRatio;
+
+    // For Desktop
+    if(canvas.width / window.devicePixelRatio >= 576) {
+        numberOfParticle = 150;
+        RANGE = 100;
+        RADIUS = 4;
+        particleSpeedRange = 0.4;
+    }
+    else {
+        numberOfParticle = 100;
+        RANGE = 75;
+        RADIUS = 3;
+        particleSpeedRange = 1;
+    }
+
+    if(canvas.width / window.devicePixelRatio >= 576 && canvas.width / window.devicePixelRatio <= 900) {
+        numberOfParticle = 115;
+        RANGE = 82;
+        RADIUS = 3.5;
+        particleSpeedRange = 0.6;
+    }
 
     init();
 });
