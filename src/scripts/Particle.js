@@ -1,5 +1,5 @@
 import {collusion} from './collusion.js';
-import {mouse, RANGE, LINE_WIDTH} from './main.js';
+import {mouse, RANGE, LINE_WIDTH, RADIUS} from './main.js';
 
 export default class Particle {
     constructor(position, velocity, color){
@@ -7,7 +7,7 @@ export default class Particle {
         this.velocity = velocity;
         this.mass = 2;
         this.color = color;
-        this.radius = 2;
+        this.radius = RADIUS;
         this.connectedPoints = [];
     }
 
@@ -56,7 +56,7 @@ export default class Particle {
         }
 
         // Setting the radius
-        this.radius = 2 + 10 * this.connectedPoints.length / particles.length;
+        this.radius = RADIUS + 10 * this.connectedPoints.length / particles.length;
 
         // Changing the position of the particle 
         this.position.x += this.velocity.x;
