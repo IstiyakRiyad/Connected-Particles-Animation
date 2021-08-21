@@ -15,7 +15,7 @@ export let RADIUS = 3;
 
 let numberOfParticle = 100;
 let particleSpeedRange = 1;
-let color = '#000';
+let color = '#3b67af';
 let particles;
 
 
