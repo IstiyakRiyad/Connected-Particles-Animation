@@ -22,27 +22,36 @@ let particles;
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
-canvas.width = window.innerWidth * window.devicePixelRatio;
-canvas.height = window.innerHeight * window.devicePixelRatio;
-
-// For Desktop
-if(canvas.width / window.devicePixelRatio >= 576) {
-    numberOfParticle = 150;
-    RANGE = 100;
-    RADIUS = 4;
-    particleSpeedRange = 0.4;
-}
-
-if(canvas.width / window.devicePixelRatio >= 576 && canvas.width / window.devicePixelRatio <= 900) {
-    numberOfParticle = 115;
-    RANGE = 82;
-    RADIUS = 3.5;
-    particleSpeedRange = 0.6;
-}
-
 
 // Initializing particles
 function init() {
+
+    canvas.width = canvas.clientWidth * window.devicePixelRatio;
+    canvas.height = canvas.clientHeight * window.devicePixelRatio;
+
+
+    // For Desktop & Mobile
+    if(canvas.width / window.devicePixelRatio >= 576) {
+        numberOfParticle = 150;
+        RANGE = 100;
+        RADIUS = 4;
+        particleSpeedRange = 0.4;
+    }
+    else {
+        numberOfParticle = 100;
+        RANGE = 75;
+        RADIUS = 3;
+        particleSpeedRange = 1;
+    }
+
+    if(canvas.width / window.devicePixelRatio >= 576 && canvas.width / window.devicePixelRatio <= 900) {
+        numberOfParticle = 115;
+        RANGE = 82;
+        RADIUS = 3.5;
+        particleSpeedRange = 0.6;
+    }
+
+    // Initializing particles
     particles = [];
     for(let i = 0; i < numberOfParticle; i++) {
         const pX = Math.random() * canvas.width;
@@ -73,45 +82,15 @@ function animate(time) {
 
     requestAnimationFrame(animate);
 }
-requestAnimationFrame(animate);
-
-// Call init function
-init();
 
 // Checking for resize event listener
 addEventListener('resize', ()=> {
-    const pixelRatio = window.devicePixelRatio;
-
-    canvas.width = canvas.clientWidth * pixelRatio;
-    canvas.height = canvas.clientHeight * pixelRatio;
-
-    // For Desktop
-    if(canvas.width / window.devicePixelRatio >= 576) {
-        numberOfParticle = 150;
-        RANGE = 100;
-        RADIUS = 4;
-        particleSpeedRange = 0.4;
-    }
-    else {
-        numberOfParticle = 100;
-        RANGE = 75;
-        RADIUS = 3;
-        particleSpeedRange = 1;
-    }
-
-    if(canvas.width / window.devicePixelRatio >= 576 && canvas.width / window.devicePixelRatio <= 900) {
-        numberOfParticle = 115;
-        RANGE = 82;
-        RADIUS = 3.5;
-        particleSpeedRange = 0.6;
-    }
-
     init();
 });
 
 window.addEventListener('mousemove', event => {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
+    mouse.x = event.clientX * window.devicePixelRatio;
+    mouse.y = event.clientY * window.devicePixelRatio;
     mouse.radius = (canvas.width / 80) * (canvas.height / 80);
 });
 
@@ -136,4 +115,13 @@ window.addEventListener('touchend', event => {
     mouse.x = undefined;
     mouse.y = undefined;
     mouse.radius = undefined;
+});
+
+
+window.addEventListener('DOMContentLoaded', event=> {
+    // Call init function
+    init();
+
+    // Run Animation function
+    requestAnimationFrame(animate);
 });
