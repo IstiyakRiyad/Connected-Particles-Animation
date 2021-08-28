@@ -115,6 +115,7 @@ window.addEventListener('touchend', event => {
     mouse.x = undefined;
     mouse.y = undefined;
     mouse.radius = undefined;
+    event.preventDefault();
 });
 
 
